@@ -20,10 +20,10 @@ export default class App extends React.Component {
 
   resetForm = () => this.setState({ ...this.state, todoInput: '' })
 
-  axiosResponseError = err => this.setState({ ...this.setState, error: err.response.data.message })
+  axiosResponseError = err => this.setState({ ...this.state, error: err.response.data.message })
 
   postNewTodo = () => {
-    axios.post(URL, {name: this.state.todoInput })
+    axios.post(URL, { name: this.state.todoInput })
     .then(res => {
       this.setState({ ...this.state, todos: this.state.todos.concat(res.data.data) })
       this.resetForm()
@@ -73,13 +73,13 @@ export default class App extends React.Component {
         displayComplete={this.state.displayComplete}
         toggleCompleted={this.toggleCompleted}
         />
-       <Form>
+       <Form
         onTodoFormSubmit={this.onTodoFormSubmit}
         onTodoInputChange={this.onTodoInputChange}
         toggleDisplayComplete={this.toggleDisplayComplete}
         todoInput={this.state.todoInput}
         diplayComplete={this.state.displayComplete}
-       </Form>
+       />
       </div>
     )
   }
